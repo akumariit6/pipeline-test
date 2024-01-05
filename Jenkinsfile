@@ -1,15 +1,12 @@
 pipeline {
     agent {
-        docker { 
-          image 'akumariit6/maven-docker-installed-agent:v1'
-          args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon }
+        docker { image 'node:20.10.0-alpine3.19' }
     }
     stages {
-        stage('Checkout') {
+        stage('Test') {
             steps {
-                sh 'echo passed'
+                sh 'node --version'
             }
         }
     }
-}
 }
